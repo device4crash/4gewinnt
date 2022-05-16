@@ -12,13 +12,14 @@ import java.beans.EventHandler;
 
 public class Viergewinnt extends Application {
   // Anfang Attribute
-  static Vierspiel vg = new Vierspiel();
-  static Vierspielstein[][] spielfeld = new Vierspielstein[10][10];
-  static Vierspieler spieler1 = new Vierspieler("Kilo", 0);
-  static Vierspieler spieler2 = new Vierspieler("Gramm", 0);
+  static Vierspiel vs = new Vierspiel();
+  static Vierspielspalte[][] spielfeld = new Vierspielspalte[10][10];
+  static Vierspieler spieler1 = new Vierspieler("Kilo");
+  static Vierspieler spieler2 = new Vierspieler("Gramm");
   static Circle[][] circle = new Circle[10][10];
-  int i = 1;
+  static Vierspielstein[][] vierspielstein = new Vierspielstein[10][10];
   static Label label1 = new Label();
+  private Label label2 = new Label();
   // Ende Attribute
   
   public void start(Stage primaryStage) { 
@@ -26,12 +27,11 @@ public class Viergewinnt extends Application {
     Scene scene = new Scene(root, 1177, 733);
     // Anfang Komponenten
     for (int spalte = 0; spalte <= 6; spalte++) {
-      spielfeld[0][spalte] = new Vierspielstein(spalte);
+      spielfeld[0][spalte] = new Vierspielspalte(spalte);
       //spielfeld[zeile][spalte] = new Ellipse2D.Float();
       spielfeld[0][spalte].setLayoutX(80+spalte*150);
       spielfeld[0][spalte].setPrefHeight(600);
       spielfeld[0][spalte].setPrefWidth(120);
-      spielfeld[0][spalte].setText(i + "");
       //spielfeld[zeile][spalte].setFont(Font.font("Dialog", FontWeight.BOLD, 12));
       root.getChildren().add(spielfeld[0][spalte]);
       spielfeld[0][spalte].setStyle("-fx-background-color: transparent;");
@@ -39,9 +39,8 @@ public class Viergewinnt extends Application {
         druecken(event);
       });*/
       //spielfeld[0][spalte].setVisible(true);      
-      i++;
     } //end of for
-    
+
     for (int zeile = 0; zeile <= 5; zeile++) {
       for (int spalte = 0; spalte <= 6; spalte++) {
         circle[zeile][spalte] = new Circle();
@@ -51,12 +50,27 @@ public class Viergewinnt extends Application {
         root.getChildren().add(circle[zeile][spalte]);
       }
     }
+    
+    if(Math.random() < 0.5){
+      vs.setAktuellerSpieler(spieler1);
+    }
+    else {
+      vs.setAktuellerSpieler(spieler2);
+    } // end of if-else
+    label2.setText("Dran ist: " + vs.getAktuellerSpieler().getName());
+    
     label1.setLayoutX(41);
     label1.setLayoutY(698);
     label1.setPrefHeight(20);
     label1.setPrefWidth(110);
     label1.setText("text");
     root.getChildren().add(label1);
+    label2.setLayoutX(170);
+    label2.setLayoutY(698);
+    label2.setPrefHeight(20);
+    label2.setPrefWidth(110);
+    label2.setText("text");
+    root.getChildren().add(label2);
     // Ende Komponenten
     
     primaryStage.setOnCloseRequest(e -> System.exit(0));

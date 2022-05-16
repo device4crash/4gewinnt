@@ -1,6 +1,6 @@
 object Viergewinnt: TFXGuiForm
-  Left = 1011
-  Top = 121
+  Left = 501
+  Top = 109
   BorderIcons = [biSystemMenu]
   Caption = 'Viergewinnt'
   ClientHeight = 732
@@ -48,6 +48,39 @@ object Viergewinnt: TFXGuiForm
     Foreground = clBlack
     Background = clBtnFace
     LayoutX = 41
+    LayoutY = 698
+    Disable = False
+    Cache = False
+    dragOver = ''
+    PrefHeight = 20
+    PrefWidth = 110
+    SnapToPixel = False
+    Alignment = CENTER_LEFT
+    ContentDisplay = _CD_LEFT
+    EllipsisString = '...'
+    Underline = False
+    TextFill = 3355443
+    GraphicTextGap = 4
+    MnemonicParsing = False
+    Text = 'text'
+    TextAlignment = _TA_LEFT
+    WrapText = False
+  end
+  object label2: TFXLabel
+    Tag = 101
+    Left = 170
+    Top = 698
+    Width = 110
+    Height = 20
+    Hint = 'label2'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Dialog'
+    Font.Style = []
+    Foreground = clBlack
+    Background = clBtnFace
+    LayoutX = 170
     LayoutY = 698
     Disable = False
     Cache = False
